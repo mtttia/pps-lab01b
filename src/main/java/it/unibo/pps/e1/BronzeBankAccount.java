@@ -11,7 +11,7 @@ public class BronzeBankAccount extends FlexibleBankAccount {
 
     @Override
     protected WithdrawalPolicy getWithdrawPolicy() {
-        return (_, _) -> true;
+        return new NoOverdraftWithdrawPolicy();
     }
 
     @Override
