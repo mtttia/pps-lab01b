@@ -22,14 +22,16 @@ public class SilverBankAccountTest extends BaseBankAccountTest{
 
     @Test
     public void testCanWithdraw() {
+        int expectedBalance = 799;
+
         initializeBankAccountBalance();
-        this.account.withdraw(200);
-        assertEquals(799, this.account.getBalance());
+        this.account.withdraw(VALID_WITHDRAW);
+        assertEquals(expectedBalance, this.account.getBalance());
     }
 
     @Test
     public void testCannotWithdrawMoreThanAvailable(){
         initializeBankAccountBalance();
-        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(TOO_LARGE_WITHDRAW));
     }
 }

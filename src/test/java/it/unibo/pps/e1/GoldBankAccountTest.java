@@ -21,9 +21,11 @@ public class GoldBankAccountTest extends BaseBankAccountTest{
 
     @Test
     public void testCanWithdraw() {
+        int expectedBalance = 800;
+
         initializeBankAccountBalance();
-        this.account.withdraw(200);
-        assertEquals(800, this.account.getBalance());
+        this.account.withdraw(VALID_WITHDRAW);
+        assertEquals(expectedBalance, this.account.getBalance());
     }
 
     @Test
