@@ -2,6 +2,7 @@ package it.unibo.pps.e1;
 
 public class GoldBankAccount extends FlexibleBankAccount {
     public static final int FEE_AMOUNT = 0;
+    public static final int MAX_NEGATIVE_BALANCE = 500;
 
     public GoldBankAccount(BankAccount bankAccount) {
         super(bankAccount);
@@ -9,7 +10,7 @@ public class GoldBankAccount extends FlexibleBankAccount {
 
     @Override
     protected WithdrawalPolicy getWithdrawPolicy() {
-        return (_, _) -> true;
+        return new MaxNegativeBalanceWithdrawPolicy(MAX_NEGATIVE_BALANCE);
     }
 
     @Override

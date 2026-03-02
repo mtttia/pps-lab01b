@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public abstract class BaseBankAccountTest {
 
     protected abstract BankAccount getBankAccount();
+    protected static final int INITIAL_BALANCE = 1000;
 
     protected void initializeBankAccountBalance(){
-        int initialAmount = 1000;
-        this.getBankAccount().deposit(initialAmount);
+        this.getBankAccount().deposit(INITIAL_BALANCE);
     }
 
     @Test

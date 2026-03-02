@@ -1,9 +1,9 @@
 package it.unibo.pps.e1;
 
-public class NoOverdraftWithdrawPolicy implements WithdrawalPolicy{
+public class NoOverdraftWithdrawPolicy extends MaxNegativeBalanceWithdrawPolicy{
+    public static final int MAX_NEGATIVE_BALANCE = 0;
 
-    @Override
-    public boolean canWithdraw(int balance, int amount) {
-        return balance - amount >= 0;
+    public NoOverdraftWithdrawPolicy() {
+        super(MAX_NEGATIVE_BALANCE);
     }
 }
