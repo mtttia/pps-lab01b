@@ -32,4 +32,11 @@ public class GoldBankAccountTest extends BaseBankAccountTest{
         int maxWithdrawAvailable = BaseBankAccountTest.INITIAL_BALANCE + GoldBankAccount.MAX_NEGATIVE_BALANCE;
         assertThrows(IllegalStateException.class, () -> this.account.withdraw(maxWithdrawAvailable));
     }
+
+    @Test
+    public void testCannotHaveTooMuchNegativeBalance(){
+        initializeBankAccountBalance();
+        int maxWithdrawAvailable = BaseBankAccountTest.INITIAL_BALANCE + GoldBankAccount.MAX_NEGATIVE_BALANCE + 1;
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(maxWithdrawAvailable));
+    }
 }
