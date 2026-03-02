@@ -1,16 +1,10 @@
 package it.unibo.pps.e2;
 
-public class KnightChessComponent implements ChessComponentWithHit {
+public class KnightChessComponent extends BaseChessComponent implements ChessComponentWithHit {
     private final int size;
-    public Pair<Integer, Integer> position;
     public KnightChessComponent(Pair<Integer, Integer> initialPosition, int size) {
-        this.position = initialPosition;
+        super(initialPosition);
         this.size = size;
-    }
-
-    @Override
-    public Pair<Integer, Integer> getPosition() {
-        return position;
     }
 
     @Override
