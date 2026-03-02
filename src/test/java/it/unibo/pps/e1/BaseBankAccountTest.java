@@ -1,42 +1,26 @@
 package it.unibo.pps.e1;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class BaseBankAccountTest {
+public abstract class BaseBankAccountTest {
 
-    private BankAccount account;
+    protected abstract BankAccount getBankAccount();
 
-    @BeforeEach
-    void init(){
-        this.account = new SilverBankAccount(new CoreBankAccount());
+    protected void initializeBankAccountBalance(){
+        int initialAmount = 1000;
+        this.getBankAccount().deposit(initialAmount);
     }
 
     @Test
     public void testInitiallyEmpty() {
-        assertEquals(0, this.account.getBalance());
+        assertEquals(0, this.getBankAccount().getBalance());
     }
 
     @Test
     public void testCanDeposit() {
-        this.account.deposit(1000);
-        assertEquals(1000, this.account.getBalance());
+        initializeBankAccountBalance();
+        assertEquals(1000, this.getBankAccount().getBalance());
     }
-
-    @Test
-    public void testCanWithdraw() {
-        this.account.deposit(1000);
-        this.account.withdraw(200);
-        assertEquals(799, this.account.getBalance());
-    }
-
-    @Test
-    public void testCannotWithdrawMoreThanAvailable(){
-        this.account.deposit(1000);
-        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
-    }
-
 }
