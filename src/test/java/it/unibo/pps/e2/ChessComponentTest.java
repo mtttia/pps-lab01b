@@ -2,8 +2,7 @@ package it.unibo.pps.e2;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class ChessComponentTest {
 
@@ -19,5 +18,11 @@ public abstract class ChessComponentTest {
     @Test
     public void testIsOnInitialPosition(){
         assertTrue(getComponent().hasComponent(INITIAL_POSITION));
+    }
+
+    @Test
+    public void testIsNotOnAWrongPosition(){
+        final Pair<Integer, Integer> INITIAL_POSITION = new Pair<>(2, 2);
+        assertFalse(getComponent().hasComponent(INITIAL_POSITION));
     }
 }

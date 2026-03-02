@@ -11,9 +11,4 @@ public class PawnChessComponent implements ChessComponent {
     public Pair<Integer, Integer> getPosition() {
         return position;
     }
-
-    @Override
-    public boolean hasComponent(Pair<Integer, Integer> checkPosition) {
-        return getPosition().equals(checkPosition);
-    }
 }
