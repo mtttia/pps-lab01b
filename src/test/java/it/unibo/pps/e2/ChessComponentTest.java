@@ -17,12 +17,12 @@ public abstract class ChessComponentTest {
 
     @Test
     public void testIsOnInitialPosition(){
-        assertTrue(getComponent().hasComponent(INITIAL_POSITION));
+        assertTrue(getComponent().hasComponent(INITIAL_POSITION.getX(), INITIAL_POSITION.getY()));
     }
 
     @Test
     public void testIsNotOnAWrongPosition(){
         final Pair<Integer, Integer> INITIAL_POSITION = new Pair<>(2, 2);
-        assertFalse(getComponent().hasComponent(INITIAL_POSITION));
+        assertFalse(getComponent().hasComponent(INITIAL_POSITION.getX(), INITIAL_POSITION.getY()));
     }
 }
