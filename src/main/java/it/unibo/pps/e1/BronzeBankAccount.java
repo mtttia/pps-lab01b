@@ -4,7 +4,6 @@ public class BronzeBankAccount extends FlexibleBankAccount {
     public static final int FREE_FEE_LIMIT = 100;
     public static final int FEE_AMOUNT = 1;
 
-
     public BronzeBankAccount(BankAccount bankAccount) {
         super(bankAccount);
     }
