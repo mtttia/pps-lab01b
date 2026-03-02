@@ -3,6 +3,7 @@ package it.unibo.pps.e2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class KnightChessComponentTest extends ChessComponentTest{
@@ -24,5 +25,18 @@ public class KnightChessComponentTest extends ChessComponentTest{
         Pair<Integer, Integer> positionToHit = new Pair<>(2,3);
         knightChessComponent.hit(positionToHit.getX(), positionToHit.getY());
         assertTrue(knightChessComponent.hasComponent(positionToHit.getX(), positionToHit.getY()));
+    }
+
+    @Test
+    public void testCannotHitPlaceOutsideMoveset(){
+        Pair<Integer, Integer> positionToHit = new Pair<>(3,3);
+        knightChessComponent.hit(positionToHit.getX(), positionToHit.getY());
+        assertTrue(knightChessComponent.hasComponent(INITIAL_POSITION.getX(), INITIAL_POSITION.getY()));
+    }
+
+    @Test
+    public void testCannotHitPlaceOutsideTheGrid(){
+        Pair<Integer, Integer> positionToHit = new Pair<>(SIZE,SIZE);
+        assertThrows(IndexOutOfBoundsException.class, () -> knightChessComponent.hit(positionToHit.getX(), positionToHit.getY()));
     }
 }
