@@ -3,15 +3,15 @@ package it.unibo.pps.e1;
 public class WithFreeLimitFeeCalculationLogic implements FeeCalculationLogic {
 
     private final int freeFeeLimit;
-    private final int feeAmount;
+    private final FixedFeeCalculationLogic fixedFeeCalculationLogic;
 
     public WithFreeLimitFeeCalculationLogic(int freeFeeLimit, int feeAmount){
         this.freeFeeLimit = freeFeeLimit;
-        this.feeAmount = feeAmount;
+        fixedFeeCalculationLogic = new FixedFeeCalculationLogic(feeAmount);
     }
 
     @Override
     public int applyFee(int amount) {
-        return amount < freeFeeLimit ? amount : amount + feeAmount;
+        return amount < freeFeeLimit ? amount : fixedFeeCalculationLogic.applyFee(amount);
     }
 }
